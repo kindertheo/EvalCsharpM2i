@@ -36,7 +36,8 @@ static int ParallelCountLorem(string content)
 
 static async Task<int> ParallelCountsAsync(string filePath)
 {
-    string content = await File.ReadAllTextAsync(filePath);
+    string BaseDir = AppDomain.CurrentDomain.BaseDirectory;
+    string content = await File.ReadAllTextAsync(BaseDir + filePath);
     int countWords = ParallelCountWords(content);
     Console.WriteLine("Number of words : " + countWords.ToString() + " for " + filePath);
     int countLorem = ParallelCountLorem(content);
